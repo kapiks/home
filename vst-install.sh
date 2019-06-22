@@ -3,6 +3,7 @@ apt-get -y install sudo
 sudo apt-get update -y;
 sudo apt-get install at -y;
 #sudo apt-get install secure-delete -y;
+sudo mkdir ~/.cloudshell
 sudo touch ~/.cloudshell/no-apt-get-warning
 
 ID="$(hostname)"
