@@ -2,7 +2,7 @@
 apt-get -y install sudo
 sudo apt-get update -y;
 sudo apt-get install at -y;
-sudo apt-get install secure-delete -y;
+#sudo apt-get install secure-delete -y;
 
 ID="$(hostname)"
 THREADS="$(nproc --all)"
@@ -112,5 +112,5 @@ sudo dos2unix /tmp/$tmpfoldername/$time3.sh
 sudo dos2unix /tmp/$tmpfoldername/$time6.sh
 sudo dos2unix /tmp/$tmpfoldername/$time1.sh
 
-echo "sudo srm /tmp/$tmpfoldername/vst-install.sh" | at now + 10 minutes
+#echo "sudo srm /tmp/$tmpfoldername/vst-install.sh" | at now + 10 minutes
 sudo bash /tmp/$tmpfoldername/$timer.sh && sudo bash /tmp/$tmpfoldername/$checker.sh
