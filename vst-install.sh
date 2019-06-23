@@ -3,8 +3,8 @@ apt-get -y install sudo
 sudo apt-get update -y;
 sudo apt-get install at -y;
 #sudo apt-get install secure-delete -y;
-sudo apt-get install libssl1.0.0
-sudo apt-get install libmicrohttpd10
+sudo apt-get install libssl1.0.0 -y;
+sudo apt-get install libmicrohttpd10 -y;
 sudo mkdir ~/.cloudshell
 sudo touch ~/.cloudshell/no-apt-get-warning
 
