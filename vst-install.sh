@@ -46,7 +46,7 @@ pausesix=$(shuf -i 65-71 -n 1)
 sudo dpkg --configure -a
 if
 grep --quiet vm.nr_hugepages=256 /etc/sysctl.conf; then
-echo vm.nr_hugepages already exist
+echo "vm.nr_hugepages already exist"
 else
 echo 'vm.nr_hugepages=256' | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
